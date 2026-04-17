@@ -504,7 +504,7 @@ tick(); setInterval(tick, 1000);
 const wf = document.getElementById('waveform');
 for(let i=0;i<40;i++){const s=document.createElement('span');s.style.height=Math.random()*18+4+'px';wf.appendChild(s);}
 
-// Scroll-driven circular orbit around section center
+// Continuous orbit with scroll acceleration
 (function() {
   const who = document.querySelector('.who');
   const imgs = document.querySelectorAll('.float-img');
@@ -514,46 +514,52 @@ for(let i=0;i<40;i++){const s=document.createElement('span');s.style.height=Math
   const count = imgs.length;
 
   imgs.forEach((img, i) => {
-    // Each image orbits the center at a different radius and phase
     orbits.push({
       el: img,
-      radius: 220 + (i % 4) * 60,         // orbit distance from center: 220-400px
-      speed: 0.6 + (i * 0.12),             // different speeds
-      phase: (i / count) * Math.PI * 2,    // evenly distributed starting positions
+      radius: 220 + (i % 4) * 60,
+      speed: 0.3 + (i * 0.06),
+      phase: (i / count) * Math.PI * 2,
       baseRot: (i * 7 - 20),
+      angle: (i / count) * Math.PI * 2,  // current angle
     });
   });
 
-  let ticking = false;
+  const baseSpeed = 0.003;  // slow idle rotation speed
+  let lastScroll = window.scrollY;
+  let scrollVelocity = 0;
 
-  function update() {
+  function render() {
     const whoRect = who.getBoundingClientRect();
     const centerX = whoRect.width / 2;
     const centerY = whoRect.height / 2;
-    const viewH = window.innerHeight;
-    const progress = (viewH / 2 - (whoRect.top + centerY)) / viewH;
+
+    // Decay scroll velocity toward zero (smooth deceleration)
+    scrollVelocity *= 0.95;
 
     orbits.forEach((o) => {
-      const angle = progress * o.speed * 5 + o.phase;
-      const x = centerX + Math.cos(angle) * o.radius - 50; // -50 = half image width
-      const y = centerY + Math.sin(angle) * o.radius - 40;  // -40 = half image height
-      const rot = o.baseRot + Math.sin(angle * 0.5) * 10;
+      // Base idle rotation + scroll-boosted rotation
+      const scrollBoost = Math.abs(scrollVelocity) * o.speed * 0.008;
+      const direction = scrollVelocity >= 0 ? 1 : -1;
+      o.angle += (baseSpeed * o.speed) + (scrollBoost * direction);
+
+      const x = centerX + Math.cos(o.angle) * o.radius - 50;
+      const y = centerY + Math.sin(o.angle) * o.radius - 40;
+      const rot = o.baseRot + Math.sin(o.angle * 0.5) * 10;
       o.el.style.left = x + 'px';
       o.el.style.top = y + 'px';
       o.el.style.transform = 'rotate(' + rot + 'deg)';
     });
 
-    ticking = false;
+    requestAnimationFrame(render);
   }
 
   window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
+    const currentScroll = window.scrollY;
+    scrollVelocity = currentScroll - lastScroll;
+    lastScroll = currentScroll;
   }, { passive: true });
 
-  update();
+  render();
 })();
 
 // Disable links
