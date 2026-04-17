@@ -369,14 +369,14 @@ footer .fr { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; co
 
 <!-- ══ WHO WE ARE ══ -->
 <section class="who">
-  <div class="float-img" style="top:12%;left:8%;--rot:-12deg;">img</div>
-  <div class="float-img" style="top:8%;right:15%;--rot:8deg;">img</div>
-  <div class="float-img" style="top:25%;left:22%;--rot:5deg;">img</div>
-  <div class="float-img" style="bottom:25%;right:10%;--rot:-7deg;">img</div>
-  <div class="float-img" style="bottom:15%;left:12%;--rot:15deg;">img</div>
-  <div class="float-img" style="top:40%;right:25%;--rot:-3deg;">img</div>
-  <div class="float-img" style="bottom:10%;right:30%;--rot:10deg;">img</div>
-  <div class="float-img" style="bottom:35%;left:30%;--rot:-8deg;">img</div>
+  <div class="float-img" style="--rot:-12deg;">img</div>
+  <div class="float-img" style="--rot:8deg;">img</div>
+  <div class="float-img" style="--rot:5deg;">img</div>
+  <div class="float-img" style="--rot:-7deg;">img</div>
+  <div class="float-img" style="--rot:15deg;">img</div>
+  <div class="float-img" style="--rot:-3deg;">img</div>
+  <div class="float-img" style="--rot:10deg;">img</div>
+  <div class="float-img" style="--rot:-8deg;">img</div>
   <span class="pill">Who We Are</span>
   <div class="who-text">
     A video agency for funded startups: developing <strong>brand films</strong>, <em>launch videos</em>, and <strong>content systems</strong>.
@@ -504,43 +504,43 @@ tick(); setInterval(tick, 1000);
 const wf = document.getElementById('waveform');
 for(let i=0;i<40;i++){const s=document.createElement('span');s.style.height=Math.random()*18+4+'px';wf.appendChild(s);}
 
-// Scroll-driven circular orbit for floating images
+// Scroll-driven circular orbit around section center
 (function() {
   const who = document.querySelector('.who');
   const imgs = document.querySelectorAll('.float-img');
   if (!who || !imgs.length) return;
 
-  // Each image gets its own orbit radius, speed multiplier, and phase offset
   const orbits = [];
+  const count = imgs.length;
+
   imgs.forEach((img, i) => {
-    const rect = img.getBoundingClientRect();
+    // Each image orbits the center at a different radius and phase
     orbits.push({
       el: img,
-      baseX: parseFloat(img.style.left || img.style.right) || 0,
-      baseY: parseFloat(img.style.top || img.style.bottom) || 0,
-      radius: 30 + (i % 3) * 20,        // orbit radius: 30-70px
-      speed: 0.8 + (i * 0.15),           // speed multiplier per image
-      phase: (i / imgs.length) * Math.PI * 2,  // spread phases evenly
-      baseRot: parseFloat(getComputedStyle(img).getPropertyValue('--rot')) || (i * 5 - 15),
+      radius: 220 + (i % 4) * 60,         // orbit distance from center: 220-400px
+      speed: 0.6 + (i * 0.12),             // different speeds
+      phase: (i / count) * Math.PI * 2,    // evenly distributed starting positions
+      baseRot: (i * 7 - 20),
     });
   });
 
-  let scrollY = 0;
   let ticking = false;
 
   function update() {
     const whoRect = who.getBoundingClientRect();
-    const whoCenter = whoRect.top + whoRect.height / 2;
+    const centerX = whoRect.width / 2;
+    const centerY = whoRect.height / 2;
     const viewH = window.innerHeight;
-    // How far the section is scrolled through (-1 to 1 range)
-    const progress = (viewH / 2 - whoCenter) / viewH;
+    const progress = (viewH / 2 - (whoRect.top + centerY)) / viewH;
 
-    orbits.forEach((o, i) => {
-      const angle = progress * o.speed * 4 + o.phase;
-      const x = Math.cos(angle) * o.radius;
-      const y = Math.sin(angle) * o.radius;
-      const rot = o.baseRot + Math.sin(angle * 0.7) * 8;
-      o.el.style.transform = 'translate(' + x + 'px, ' + y + 'px) rotate(' + rot + 'deg)';
+    orbits.forEach((o) => {
+      const angle = progress * o.speed * 5 + o.phase;
+      const x = centerX + Math.cos(angle) * o.radius - 50; // -50 = half image width
+      const y = centerY + Math.sin(angle) * o.radius - 40;  // -40 = half image height
+      const rot = o.baseRot + Math.sin(angle * 0.5) * 10;
+      o.el.style.left = x + 'px';
+      o.el.style.top = y + 'px';
+      o.el.style.transform = 'rotate(' + rot + 'deg)';
     });
 
     ticking = false;
@@ -553,7 +553,6 @@ for(let i=0;i<40;i++){const s=document.createElement('span');s.style.height=Math
     }
   }, { passive: true });
 
-  // Initial position
   update();
 })();
 
