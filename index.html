@@ -156,9 +156,17 @@ nav {
 .float-img {
   position: absolute; width: 100px; height: 80px;
   background: var(--s2); border: 1px solid rgba(255,255,255,.06);
-  transform: rotate(var(--rot));
   display: flex; align-items: center; justify-content: center;
   font-size: 7px; letter-spacing: .15em; text-transform: uppercase; color: var(--t4);
+  animation: drift var(--speed, 12s) ease-in-out infinite alternate;
+  transform: rotate(var(--rot));
+}
+@keyframes drift {
+  0% { transform: rotate(var(--rot)) translate(0, 0); }
+  25% { transform: rotate(calc(var(--rot) + 3deg)) translate(8px, -12px); }
+  50% { transform: rotate(calc(var(--rot) - 2deg)) translate(-6px, 8px); }
+  75% { transform: rotate(calc(var(--rot) + 4deg)) translate(10px, 5px); }
+  100% { transform: rotate(calc(var(--rot) - 3deg)) translate(-8px, -10px); }
 }
 
 /* ══ WHAT WE DO ══ */
@@ -368,14 +376,14 @@ footer .fr { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; co
 
 <!-- ══ WHO WE ARE ══ -->
 <section class="who">
-  <div class="float-img" style="top:12%;left:8%;--rot:-12deg;">img</div>
-  <div class="float-img" style="top:8%;right:15%;--rot:8deg;">img</div>
-  <div class="float-img" style="top:25%;left:22%;--rot:5deg;">img</div>
-  <div class="float-img" style="bottom:25%;right:10%;--rot:-7deg;">img</div>
-  <div class="float-img" style="bottom:15%;left:12%;--rot:15deg;">img</div>
-  <div class="float-img" style="top:40%;right:25%;--rot:-3deg;">img</div>
-  <div class="float-img" style="bottom:10%;right:30%;--rot:10deg;">img</div>
-  <div class="float-img" style="bottom:35%;left:30%;--rot:-8deg;">img</div>
+  <div class="float-img" style="top:12%;left:8%;--rot:-12deg;--speed:14s;">img</div>
+  <div class="float-img" style="top:8%;right:15%;--rot:8deg;--speed:11s;">img</div>
+  <div class="float-img" style="top:25%;left:22%;--rot:5deg;--speed:16s;">img</div>
+  <div class="float-img" style="bottom:25%;right:10%;--rot:-7deg;--speed:13s;">img</div>
+  <div class="float-img" style="bottom:15%;left:12%;--rot:15deg;--speed:10s;">img</div>
+  <div class="float-img" style="top:40%;right:25%;--rot:-3deg;--speed:18s;">img</div>
+  <div class="float-img" style="bottom:10%;right:30%;--rot:10deg;--speed:15s;">img</div>
+  <div class="float-img" style="bottom:35%;left:30%;--rot:-8deg;--speed:12s;">img</div>
   <span class="pill">Who We Are</span>
   <div class="who-text">
     A video agency for funded startups: developing <strong>brand films</strong>, <em>launch videos</em>, and <strong>content systems</strong>.
