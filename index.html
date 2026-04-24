@@ -300,6 +300,26 @@ footer .fr {
   color: var(--t1);
 }
 
+/* ══ VIDEO OVERLAY ══ */
+.vid-wrap { position: relative; width: 100%; height: 100%; }
+.vid-wrap iframe { width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: none; }
+.vid-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(0,0,0,.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .3s;
+}
+.vid-overlay:hover { background: rgba(0,0,0,.15); }
+.play-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 2px solid rgba(248,53,74,.6); background: rgba(248,53,74,.12);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s;
+}
+.vid-overlay:hover .play-circle { border-color: var(--ac); background: rgba(248,53,74,.25); }
+.play-circle svg { margin-left: 3px; }
+.vid-overlay.hidden { display: none; }
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 900px) {
   .port-grid { grid-template-columns: repeat(2, 1fr); }
@@ -364,8 +384,13 @@ footer .fr {
 <section class="portfolio" id="work">
   <div class="port-grid">
     <div class="port-card">
-      <div class="port-thumb">[ thumb ]</div>
-      <div class="port-meta"><span class="port-brand">BRAND NAME</span><span class="port-type">Video Type</span></div>
+      <div class="port-thumb"><div class="vid-wrap">
+        <iframe data-src="https://player.vimeo.com/video/1148316457?title=0&byline=0&portrait=0&color=F8354A&autoplay=0&loop=0&muted=1" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
+        <div class="vid-overlay" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
+          <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#F8354A"/></svg></div>
+        </div>
+      </div></div>
+      <div class="port-meta"><span class="port-brand">Counting Sheep Club</span><span class="port-type">Launch Video</span></div>
     </div>
     <div class="port-card">
       <div class="port-thumb">[ thumb ]</div>
