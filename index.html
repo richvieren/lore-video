@@ -130,14 +130,14 @@ nav {
   padding: 160px 40px 80px;
   text-align: center;
   position: relative;
-  min-height: 80vh;
+  height: 100vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 .pill {
   display: inline-block; padding: 8px 20px;
-  background: var(--ac); border-radius: 100px;
+  background: #fff; border: 1.5px solid var(--ac); border-radius: 100px;
   font-size: 11px; font-weight: 400; letter-spacing: .18em;
-  text-transform: uppercase; color: #fff; margin-bottom: 40px;
+  text-transform: uppercase; color: var(--ac); margin-bottom: 40px;
 }
 .about-text {
   font-family: 'Gira Sans', sans-serif;
@@ -172,16 +172,16 @@ nav {
 
 /* ══ PORTFOLIO ══ */
 .portfolio {
-  padding: 80px 40px 60px;
-  max-width: 1280px; margin: 0 auto;
+  padding: 80px 0 60px;
+  width: 100%;
 }
 .port-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
   margin-bottom: 40px;
 }
 .port-card {}
 .port-thumb {
-  width: 100%; aspect-ratio: 16/10; background: var(--s2); border-radius: 4px;
+  width: 100%; aspect-ratio: 16/10; background: var(--s2); border-radius: 0;
   overflow: hidden; position: relative;
   display: flex; align-items: center; justify-content: center;
   font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--t4);
@@ -433,41 +433,26 @@ footer .fr {
 <section class="services">
   <span class="pill">Services</span>
   <div class="services-carousel" id="services-carousel">
-    <div class="service-card"><div class="vid-wrap">
-      <iframe data-src="https://player.vimeo.com/video/1094996108?title=0&byline=0&portrait=0&autoplay=0&loop=0" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
-      <div class="vid-overlay" style="background:url('thumbs/carousel-1.jpg') center/cover no-repeat" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
-        <div class="service-card-title"><em>Hero</em> <span>Video</span></div>
-        <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#FFFFFF"/></svg></div>
-      </div>
-    </div></div>
-    <div class="service-card"><div class="vid-wrap">
-      <iframe data-src="https://player.vimeo.com/video/1135111015?title=0&byline=0&portrait=0&autoplay=0&loop=0" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
-      <div class="vid-overlay" style="background:url('thumbs/carousel-2.jpg') center/cover no-repeat" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
-        <div class="service-card-title"><em>Founder</em> <span>Content</span></div>
-        <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#FFFFFF"/></svg></div>
-      </div>
-    </div></div>
-    <div class="service-card"><div class="vid-wrap">
-      <iframe data-src="https://player.vimeo.com/video/1135103105?title=0&byline=0&portrait=0&autoplay=0&loop=0" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
-      <div class="vid-overlay" style="background:url('thumbs/carousel-3.jpg') center/cover no-repeat" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
-        <div class="service-card-title"><em>Ad</em> <span>Creative</span></div>
-        <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#FFFFFF"/></svg></div>
-      </div>
-    </div></div>
-    <div class="service-card"><div class="vid-wrap">
-      <iframe data-src="https://player.vimeo.com/video/1133486488?title=0&byline=0&portrait=0&autoplay=0&loop=0" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
-      <div class="vid-overlay" style="background:url('thumbs/carousel-4.jpg') center/cover no-repeat" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
-        <div class="service-card-title"><em>Campaign</em> <span>Video</span></div>
-        <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#FFFFFF"/></svg></div>
-      </div>
-    </div></div>
-    <div class="service-card"><div class="vid-wrap">
-      <iframe data-src="https://player.vimeo.com/video/1014229966?title=0&byline=0&portrait=0&autoplay=0&loop=0" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
-      <div class="vid-overlay" style="background:url('thumbs/carousel-5.jpg') center/cover no-repeat" onclick="this.classList.add('hidden');var f=this.parentElement.querySelector('iframe');f.src=f.dataset.src.replace('autoplay=0','autoplay=1')">
-        <div class="service-card-title"><em>Brand</em> <span>Film</span></div>
-        <div class="play-circle"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M6 4l11 6-11 6V4z" fill="#FFFFFF"/></svg></div>
-      </div>
-    </div></div>
+    <div class="service-card">
+      <iframe src="https://player.vimeo.com/video/1094996108?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <div class="service-card-title"><em>Hero</em> <span>Video</span></div>
+    </div>
+    <div class="service-card">
+      <iframe src="https://player.vimeo.com/video/1135111015?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <div class="service-card-title"><em>Founder</em> <span>Content</span></div>
+    </div>
+    <div class="service-card">
+      <iframe src="https://player.vimeo.com/video/1135103105?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <div class="service-card-title"><em>Ad</em> <span>Creative</span></div>
+    </div>
+    <div class="service-card">
+      <iframe src="https://player.vimeo.com/video/1133486488?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <div class="service-card-title"><em>Campaign</em> <span>Video</span></div>
+    </div>
+    <div class="service-card">
+      <iframe src="https://player.vimeo.com/video/1014229966?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <div class="service-card-title"><em>Brand</em> <span>Film</span></div>
+    </div>
   </div>
   <div class="services-cta">
     <a href="mailto:hello@lore.video" class="cta-outline">Work Together</a>
