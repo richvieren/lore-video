@@ -220,16 +220,23 @@ nav {
   width: auto;
 }
 
-/* Client logos */
-.client-strip {
-  width: 100%; padding: 48px 40px 0;
-  display: flex; justify-content: center; align-items: center; gap: 60px;
-  flex-wrap: wrap;
+/* Client logos carousel */
+.client-carousel {
+  width: 100%; overflow: hidden; padding: 24px 0;
 }
-.client-strip img {
-  height: 28px; width: auto;
-  opacity: .35;
+.client-track {
+  display: flex; align-items: center; gap: 60px;
+  animation: clientScroll 20s linear infinite;
+  width: max-content;
+}
+.client-track img {
+  height: 24px; width: auto;
+  opacity: .4;
   filter: grayscale(100%);
+}
+@keyframes clientScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ══ PORTFOLIO ══ */
@@ -505,13 +512,27 @@ footer .fr {
 </section>
 
 <footer style="flex-direction:column;align-items:center;gap:20px;">
-  <div class="client-strip" style="width:100%;padding:0;justify-content:center;flex-wrap:nowrap;align-items:center;gap:40px;">
-    <img src="clients/clients_0000_Layer-7.png" alt="Client" style="height:32px;">
-    <img src="clients/clients_0001_Layer-6.png" alt="Client" style="height:22px;">
-    <img src="clients/clients_0002_Layer-5.png" alt="Client" style="height:22px;">
-    <img src="clients/clients_0003_Layer-4.png" alt="Client" style="height:22px;">
-    <img src="clients/clients_0004_Layer-2.png" alt="Client" style="height:14px;">
-    <img src="clients/clients_0005_Layer-1.png" alt="Client" style="height:14px;">
+  <div class="client-carousel">
+    <div class="client-track">
+      <img src="clients/adobe.png" alt="Adobe">
+      <img src="clients/epidemic.png" alt="Epidemic Sound">
+      <img src="clients/levis.png" alt="Levis">
+      <img src="clients/natgeo.png" alt="National Geographic">
+      <img src="clients/redbull.png" alt="Red Bull">
+      <img src="clients/storyblocks.png" alt="Storyblocks">
+      <img src="clients/tml.png" alt="Tomorrowland">
+      <img src="clients/tnf.png" alt="The North Face">
+      <img src="clients/samsung.png" alt="Samsung">
+      <img src="clients/adobe.png" alt="Adobe">
+      <img src="clients/epidemic.png" alt="Epidemic Sound">
+      <img src="clients/levis.png" alt="Levis">
+      <img src="clients/natgeo.png" alt="National Geographic">
+      <img src="clients/redbull.png" alt="Red Bull">
+      <img src="clients/storyblocks.png" alt="Storyblocks">
+      <img src="clients/tml.png" alt="Tomorrowland">
+      <img src="clients/tnf.png" alt="The North Face">
+      <img src="clients/samsung.png" alt="Samsung">
+    </div>
   </div>
   <span class="fr">Lore 2026 &copy;</span>
 </footer>
