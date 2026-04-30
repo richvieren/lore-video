@@ -234,8 +234,9 @@ nav {
 
 /* ══ PORTFOLIO ══ */
 .portfolio {
-  padding: 80px 0 60px;
-  width: 95%; margin: 0 auto;
+  padding: 0 0 60px;
+  width: 95%; margin: -80px auto 0;
+  position: relative; z-index: 2;
 }
 .port-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -267,7 +268,7 @@ nav {
 }
 .port-dots span {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--t1); opacity: .8;
+  background: var(--s1); opacity: .8;
 }
 .port-dots span.inactive { opacity: .2; }
 
@@ -301,9 +302,11 @@ nav {
   width: 100%; height: 100%; object-fit: cover;
 }
 .service-card-title {
-  position: absolute; top: 20px; left: 20px;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
   font-size: 22px; color: #fff; line-height: 1.2;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+  text-shadow: 0 2px 12px rgba(0,0,0,.4); text-align: center;
+  padding: 20px;
 }
 .service-card-title em {
   font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
@@ -312,17 +315,17 @@ nav {
   font-family: 'Gira Sans', sans-serif; font-weight: 400;
 }
 .services-cta {
-  display: flex; justify-content: flex-end;
+  display: flex; justify-content: center;
   padding: 40px 0 0;
 }
 .cta-outline {
   display: inline-block; padding: 14px 32px;
-  border: 1.5px solid var(--ac); border-radius: 100px;
-  font-family: 'Gira Sans', sans-serif; font-weight: 700;
-  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--ac); transition: all .3s;
+  background: var(--ac); border: 1.5px solid var(--ac); border-radius: 100px;
+  font-family: 'Gira Sans', sans-serif; font-weight: 400;
+  font-size: 13px; letter-spacing: .08em; text-transform: none;
+  color: var(--s1); transition: all .3s;
 }
-.cta-outline:hover { background: var(--ac); color: #fff; }
+.cta-outline:hover { background: #d42a3d; border-color: #d42a3d; }
 
 /* ══ FOOTER CTA ══ */
 .footer-cta {
@@ -444,6 +447,9 @@ footer .fr {
 
 <!-- ══ PORTFOLIO ══ -->
 <section class="portfolio" id="work">
+  <div style="text-align:center;margin-bottom:32px;">
+    <span class="pill">Work</span>
+  </div>
   <div class="port-grid">
     <div class="port-card">
       <div class="port-thumb"><video src="thumbs/painting-web-v1.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video></div>
@@ -588,15 +594,22 @@ footer .fr {
   render();
 })();
 
-// Drag-to-scroll for services carousel
+// Infinite auto-scrolling services carousel
 (function() {
   const el = document.getElementById('services-carousel');
   if (!el) return;
-  let isDown = false, startX, scrollLeft;
-  el.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; });
-  el.addEventListener('mouseleave', () => { isDown = false; });
-  el.addEventListener('mouseup', () => { isDown = false; });
-  el.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - el.offsetLeft; el.scrollLeft = scrollLeft - (x - startX); });
+  // Clone all cards for seamless loop
+  const cards = el.innerHTML;
+  el.innerHTML = cards + cards;
+  let scrollPos = 0;
+  const speed = 0.5;
+  function autoScroll() {
+    scrollPos += speed;
+    if (scrollPos >= el.scrollWidth / 2) scrollPos = 0;
+    el.scrollLeft = scrollPos;
+    requestAnimationFrame(autoScroll);
+  }
+  autoScroll();
 })();
 
 // Smooth anchor scroll
