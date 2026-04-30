@@ -270,15 +270,9 @@ nav {
 .services .pill { margin-bottom: 48px; }
 .services-carousel {
   display: flex; gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   padding: 0 0 20px;
-  scrollbar-width: none;
-  cursor: grab;
 }
-.services-carousel::-webkit-scrollbar { display: none; }
-.services-carousel:active { cursor: grabbing; }
 .service-card {
   flex: 0 0 280px;
   aspect-ratio: 9/16;
