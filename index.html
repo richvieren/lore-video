@@ -292,8 +292,8 @@ nav {
   width: 100%; height: 100%; object-fit: cover;
 }
 .service-card-title {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  display: flex; align-items: center; justify-content: center;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: flex-end; justify-content: center;
   font-size: 22px; color: #fff; line-height: 1.2;
   text-shadow: 0 2px 12px rgba(0,0,0,.4); text-align: center;
   padding: 20px;
@@ -583,18 +583,19 @@ footer .fr {
 (function() {
   const el = document.getElementById('services-carousel');
   if (!el) return;
-  // Clone all cards for seamless loop
-  const cards = el.innerHTML;
-  el.innerHTML = cards + cards;
-  let scrollPos = 0;
+  // Clone cards for seamless loop
+  const originalCards = Array.from(el.children);
+  originalCards.forEach(card => el.appendChild(card.cloneNode(true)));
   const speed = 0.5;
   function autoScroll() {
-    scrollPos += speed;
-    if (scrollPos >= el.scrollWidth / 2) scrollPos = 0;
-    el.scrollLeft = scrollPos;
+    el.scrollLeft += speed;
+    // Reset when we've scrolled past the original set
+    const halfWidth = el.scrollWidth / 2;
+    if (el.scrollLeft >= halfWidth) el.scrollLeft = 0;
     requestAnimationFrame(autoScroll);
   }
-  autoScroll();
+  // Wait for iframes to settle
+  setTimeout(autoScroll, 1000);
 })();
 
 // Smooth anchor scroll
