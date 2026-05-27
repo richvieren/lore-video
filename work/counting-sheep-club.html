@@ -118,16 +118,15 @@ nav {
   padding: 0 40px 120px;
 }
 .media-grid {
-  columns: 2;
-  column-gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 .media-item {
   position: relative;
   width: 100%;
   overflow: hidden;
   background: var(--s2);
-  break-inside: avoid;
-  margin-bottom: 16px;
 }
 .media-item iframe {
   width: 100%;
@@ -137,7 +136,7 @@ nav {
   border: none;
 }
 .media-item.full {
-  column-span: all;
+  grid-column: 1 / -1;
 }
 .media-placeholder {
   width: 100%;
@@ -209,7 +208,7 @@ footer .fr {
   .client-name { font-size: 24px; padding: 12px 32px; }
   .intro { padding: 0 20px 60px; }
   .media-section { padding: 0 20px 80px; }
-  .media-grid { columns: 1; }
+  .media-grid { grid-template-columns: 1fr; }
   footer { padding: 16px 20px; }
 }
 </style>
@@ -244,7 +243,7 @@ footer .fr {
 
     <!-- Video 1: Founder Ad (full width, 16:9) -->
     <div class="media-item full" style="aspect-ratio:16/9;" id="vid1">
-      <iframe src="https://player.vimeo.com/video/1148316457?autoplay=1&loop=1&muted=1&background=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" id="frame1"></iframe>
+      <iframe src="https://player.vimeo.com/video/1148316457?background=1&autoplay=1&loop=1&muted=1" allow="autoplay; fullscreen" id="frame1"></iframe>
       <button class="mute-btn" onclick="toggleMute('frame1', this)" aria-label="Unmute">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
       </button>
@@ -252,7 +251,7 @@ footer .fr {
 
     <!-- Video 2: Launch Film (16:9) -->
     <div class="media-item" style="aspect-ratio:16/9;" id="vid2">
-      <iframe src="https://player.vimeo.com/video/1187639129?autoplay=1&loop=1&muted=1&background=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" id="frame2"></iframe>
+      <iframe src="https://player.vimeo.com/video/1187639129?background=1&autoplay=1&loop=1&muted=1" allow="autoplay; fullscreen" id="frame2"></iframe>
       <button class="mute-btn" onclick="toggleMute('frame2', this)" aria-label="Unmute">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
       </button>
@@ -260,7 +259,7 @@ footer .fr {
 
     <!-- Video 3 (9:16) -->
     <div class="media-item" style="aspect-ratio:720/1280;" id="vid3">
-      <iframe src="https://player.vimeo.com/video/1195920975?autoplay=1&loop=1&muted=1&background=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" id="frame3"></iframe>
+      <iframe src="https://player.vimeo.com/video/1195920975?background=1&autoplay=1&loop=1&muted=1" allow="autoplay; fullscreen" id="frame3"></iframe>
       <button class="mute-btn" onclick="toggleMute('frame3', this)" aria-label="Unmute">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
       </button>
@@ -268,7 +267,7 @@ footer .fr {
 
     <!-- Video 4 (2:3) -->
     <div class="media-item" style="aspect-ratio:1080/1620;" id="vid4">
-      <iframe src="https://player.vimeo.com/video/1195921998?autoplay=1&loop=1&muted=1&background=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" id="frame4"></iframe>
+      <iframe src="https://player.vimeo.com/video/1195921998?background=1&autoplay=1&loop=1&muted=1" allow="autoplay; fullscreen" id="frame4"></iframe>
       <button class="mute-btn" onclick="toggleMute('frame4', this)" aria-label="Unmute">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
       </button>
