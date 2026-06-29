@@ -27,11 +27,11 @@
 }
 
 :root {
-  --bg: #FFFFFF;
+  --bg: #F6EFE7;
   --s1: #161215;
   --s2: #e8e5e0;
-  --t1: #0D0D0D;
-  --t2: #333333;
+  --t1: #161215;
+  --t2: #161215;
   --t3: #777777;
   --t4: #999999;
   --ac: #F8354A;
@@ -52,19 +52,21 @@ a { color: inherit; text-decoration: none; }
 nav {
   padding: 24px 40px;
   display: flex; justify-content: space-between; align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,.06);
+
 }
 .nav-left {
   display: flex; gap: 28px; align-items: center;
 }
 .nav-link {
   font-size: 12px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--t3); transition: color .3s;
+  color: var(--t1); display: inline-block; transition: color .3s, transform .3s;
 }
-.nav-link:hover { color: var(--t1); }
+.nav-link:hover { color: var(--t1); transform: scale(1.12); }
 .nav-logo {
-  font-family: 'Podium', sans-serif; font-weight: 900;
-  font-size: 28px; color: var(--ac); letter-spacing: .02em; text-transform: uppercase;
+  display: flex; align-items: center;
+}
+.nav-logo img {
+  height: 22px; width: auto; display: block;
 }
 .nav-cta {
   font-size: 11px; font-weight: 400; letter-spacing: .18em; text-transform: uppercase;
@@ -75,7 +77,7 @@ nav {
 
 /* ══ CLIENT HEADER ══ */
 .client-header {
-  padding: 120px 40px 80px;
+  padding: 40px 40px 80px;
   text-align: center;
 }
 .client-name {
@@ -181,7 +183,7 @@ nav {
 
 /* ══ FOOTER ══ */
 footer {
-  border-top: 1px solid rgba(0,0,0,.06);
+  border-top: none;
   background: var(--bg);
   padding: 20px 40px;
   display: flex; justify-content: space-between; align-items: center;
@@ -193,6 +195,24 @@ footer .fl {
 footer .fr {
   font-size: 12px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase;
   color: var(--t3);
+}
+
+.client-carousel {
+  width: 100%; overflow: hidden; padding: 24px 0 4px;
+}
+.client-track {
+  display: flex; align-items: center; gap: 60px;
+  animation: clientScroll 20s linear infinite;
+  width: max-content;
+}
+.client-track img {
+  height: 24px; width: auto;
+  opacity: 1;
+  filter: brightness(0) invert(8%);
+}
+@keyframes clientScroll {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 /* ══ RESPONSIVE ══ */
@@ -215,7 +235,7 @@ footer .fr {
     <a href="../index.html" class="nav-link">Home</a>
     <a href="../index.html#work" class="nav-link">Work</a>
   </div>
-  <a href="../index.html" class="nav-logo">Lore</a>
+  <a href="../index.html" class="nav-logo"><img src="../image/lore-logo.svg" alt="Lore"></a>
   <a href="mailto:hello@lore.video" class="nav-cta">Reach Out</a>
 </nav>
 
@@ -289,9 +309,30 @@ footer .fr {
 
 <a href="../index.html#work" class="back-link">&larr; Back to all work</a>
 
-<footer>
-  <span class="fl">Lore 2026 &copy;</span>
-  <span class="fr">hello@lore.video</span>
+<footer style="flex-direction:column;align-items:center;gap:20px;">
+  <div class="client-carousel">
+    <div class="client-track">
+      <img src="../clients/adobe.png" alt="Adobe">
+      <img src="../clients/epidemic.png" alt="Epidemic Sound">
+      <img src="../clients/levis.png" alt="Levis">
+      <img src="../clients/natgeo.png" alt="National Geographic">
+      <img src="../clients/redbull.png" alt="Red Bull">
+      <img src="../clients/storyblocks.png" alt="Storyblocks">
+      <img src="../clients/tml.png" alt="Tomorrowland">
+      <img src="../clients/tnf.png" alt="The North Face" style="height:48px;">
+      <img src="../clients/samsung.png" alt="Samsung">
+      <img src="../clients/adobe.png" alt="Adobe">
+      <img src="../clients/epidemic.png" alt="Epidemic Sound">
+      <img src="../clients/levis.png" alt="Levis">
+      <img src="../clients/natgeo.png" alt="National Geographic">
+      <img src="../clients/redbull.png" alt="Red Bull">
+      <img src="../clients/storyblocks.png" alt="Storyblocks">
+      <img src="../clients/tml.png" alt="Tomorrowland">
+      <img src="../clients/tnf.png" alt="The North Face" style="height:48px;">
+      <img src="../clients/samsung.png" alt="Samsung">
+    </div>
+  </div>
+  <span class="fr">Lore 2026 &copy;</span>
 </footer>
 
 <script>
@@ -304,7 +345,7 @@ footer .fr {
   function layout() {
     const isMobile = window.innerWidth <= 600;
     const cols = isMobile ? 1 : 2;
-    const gridW = grid.parentElement.clientWidth;
+    const gridW = grid.clientWidth;
     const colW = (gridW - gap * (cols - 1)) / cols;
     const colH = new Array(cols).fill(0);
 

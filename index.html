@@ -25,35 +25,26 @@
   font-weight: 800;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Gira Sans';
-  src: url('fonts/gira-sans-book.otf') format('opentype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gira Sans';
-  src: url('fonts/gira-sans-book-italic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gira Sans';
-  src: url('fonts/gira-sans-bold.otf') format('opentype');
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gira Sans';
-  src: url('fonts/gira-sans-medium-italic.otf') format('opentype');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-ThinItalic.ttf') format('truetype'); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-ExtraLight.ttf') format('truetype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-ExtraLightItalic.ttf') format('truetype'); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-MediumItalic.ttf') format('truetype'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-SemiBoldItalic.ttf') format('truetype'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-ExtraBoldItalic.ttf') format('truetype'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Be Vietnam Pro'; src: url('fonts/bevietnampro/BeVietnamPro-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
 
 :root {
-  --bg: #FFFFFF;
+  --bg: #F6EFE7;
   --s1: #161215;
   --s2: #e8e5e0;
   --t1: #0D0D0D;
@@ -68,7 +59,7 @@
 body {
   background: var(--bg);
   color: var(--t2);
-  font-family: 'Gira Sans', 'Inter', sans-serif;
+  font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -80,8 +71,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ══ NAV ══ */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
-  padding: 24px 40px;
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  width: 92vw; z-index: 99;
+  padding: 24px 0;
   display: flex; justify-content: space-between; align-items: center;
 }
 .nav-left {
@@ -89,20 +81,71 @@ nav {
 }
 .nav-link {
   font-size: 12px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255,255,255,.8); transition: color .3s;
+  color: #F6EFE7; display: inline-block; line-height: 1;
+  transition: color .3s, transform .3s;
 }
-.nav-link:hover { color: #fff; }
+.nav-link:hover { transform: scale(1.12); }
+nav.nav-dark .nav-link { color: #F6EFE7; }
+nav.nav-light .nav-link { color: #161215; }
+button.nav-about-toggle {
+  background: none; border: none; padding: 0; margin: 0;
+  font-family: inherit; cursor: pointer;
+  position: relative; z-index: 130;
+}
+nav.menu-open { z-index: 300; }
+nav.menu-open .nav-about-toggle { color: #F6EFE7; }
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.hamburger { display: none; }
+.about-panel {
+  position: absolute; top: calc(100% + 16px); left: 0;
+  width: 336px; max-width: 86vw;
+  background: var(--ac); border-radius: 0;
+  padding: 24px 26px 26px;
+  box-shadow: 0 14px 44px rgba(0,0,0,.18);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+  z-index: 120; text-align: left;
+}
+.nav-dropdown.open .about-panel {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.about-panel-h {
+  font-family: 'Podium', sans-serif; font-weight: 900;
+  font-size: 14px; line-height: 1; color: #F6EFE7;
+  text-transform: uppercase; letter-spacing: .01em;
+  white-space: nowrap;
+  margin: 0 0 13px;
+}
+.about-panel p {
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400;
+  font-size: 13px; line-height: 1.45; color: #F6EFE7;
+  text-transform: none; letter-spacing: normal;
+}
+.about-panel p + p { margin-top: 13px; }
+.about-panel p em { font-style: italic; }
+.about-panel p + .about-panel-h { margin-top: 22px; }
+.about-panel-link {
+  display: inline-block; margin-top: 3px;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400;
+  font-size: 13px; color: #F6EFE7;
+  text-decoration: underline; text-underline-offset: 3px;
+}
 .nav-logo {
   position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: 'Podium', sans-serif; font-weight: 900;
-  font-size: 28px; color: var(--ac); letter-spacing: .02em; text-transform: uppercase;
-  -webkit-text-stroke: 0.5px rgba(255,255,255,.3);
+  display: flex; align-items: center;
+}
+.nav-logo img {
+  height: 22px; width: auto; display: block;
 }
 .nav-cta {
   font-size: 11px; font-weight: 400; letter-spacing: .18em; text-transform: uppercase;
   color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.3); padding: 10px 24px;
   transition: all .3s;
 }
+nav.nav-dark .nav-cta { color: rgba(255,255,255,.85); border-color: rgba(255,255,255,.35); }
+nav.nav-light .nav-cta { color: #161215; border-color: rgba(22,18,21,.35); }
+.nav-cta.pill { border-radius: 100px; color: #161215; border: none; padding: 10px 16px; background: #F6EFE7; }
+.nav-cta.pill:hover { color: #F6EFE7; border: none; }
 .nav-cta:hover { background: var(--ac); color: #000; border-color: var(--ac); }
 
 /* ══ HERO ══ */
@@ -118,10 +161,42 @@ nav {
 }
 .hero-video-bg video {
   width: 100%; height: 100%; object-fit: cover;
+  filter: blur(0.6px);
+  transform: scale(1.03);
+}
+.hero-grain {
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  animation: grainShift 0.5s steps(1) infinite;
+}
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-5%, -5%); }
+  20%  { transform: translate(-10%, 5%); }
+  30%  { transform: translate(5%, -10%); }
+  40%  { transform: translate(-5%, 10%); }
+  50%  { transform: translate(-10%, 5%); }
+  60%  { transform: translate(10%, 0); }
+  70%  { transform: translate(0, 10%); }
+  80%  { transform: translate(-10%, -5%); }
+  90%  { transform: translate(5%, 5%); }
+  100% { transform: translate(0, 0); }
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: 6;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
 }
 .hero-center {
-  text-align: center; position: relative; z-index: 10;
-  width: 100%; padding: 0 40px;
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: clamp(240px, calc(28vh + 40px), 360px); z-index: 10;
+  text-align: left; width: 92vw; padding: 0;
+  transition: opacity .15s ease;
 }
 .hero-logo {
   font-family: 'Podium', sans-serif; font-weight: 900;
@@ -150,12 +225,11 @@ nav {
   to { opacity: 1; }
 }
 .hero-title {
-  font-family: 'Gira Sans', sans-serif; font-weight: 400;
-  font-size: clamp(18px, 2.3vw, 32px);
-  line-height: 1.8; color: #fff;
-  letter-spacing: .02em; text-align: center;
-  width: 100%;
-  mix-blend-mode: difference;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400;
+  font-size: clamp(11px, 1.38vw, 19px);
+  line-height: 1.4; color: #fff;
+  letter-spacing: .02em; text-align: left;
+  max-width: 320px;
   opacity: 0;
   animation: fadeUp .8s ease .8s forwards;
 }
@@ -164,53 +238,38 @@ nav {
   to { opacity: 1; transform: translateY(0); }
 }
 .hero-btns {
-  display: flex; gap: 16px; justify-content: center;
-  margin-top: 32px;
+  display: flex; gap: 16px; justify-content: flex-start;
+  margin-top: 28px;
   opacity: 0;
   animation: fadeUp .8s ease 1.2s forwards;
 }
 .hero-btn {
-  padding: 12px 28px;
-  border: 1.5px solid var(--ac); border-radius: 100px;
-  font-family: 'Gira Sans', sans-serif; font-weight: 400;
-  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--ac); transition: all .3s;
-  mix-blend-mode: difference;
+  padding: 10px 16px;
+  border: 1px solid #161215; border-radius: 100px;
+  background: #EAABFE; color: #161215;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  transition: all .3s;
+  transform-origin: left center;
 }
-.hero-btn:hover { background: var(--ac); color: #000; }
+.hero-btn:hover { background: #EAABFE; border-color: #161215; color: #161215; transform: scale(1.05); }
+.hero-wordmark {
+  position: fixed; left: 50%; top: 0;
+  transform: translateX(-50%);
+  z-index: 100;
+  pointer-events: none;
+  will-change: top, width;
+}
+.hero-wordmark img {
+  width: 100%; height: auto; display: block;
+}
 
-/* ══ ABOUT ══ */
-.about {
-  padding: 160px 40px 80px;
-  text-align: center;
-  position: relative;
-  height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
 .pill {
   display: inline-block; padding: 8px 20px;
-  background: #fff; border: 1.5px solid var(--ac); border-radius: 100px;
+  background: #F6EFE7; border: 1.5px solid var(--ac); border-radius: 100px;
   font-size: 11px; font-weight: 400; letter-spacing: .18em;
   text-transform: uppercase; color: var(--ac); margin-bottom: 40px;
 }
-.about-h2 {
-  font-family: 'Gira Sans', sans-serif;
-  font-size: clamp(28px, 4vw, 52px);
-  line-height: 0.95; color: var(--t1);
-  max-width: 1008px; font-weight: 700;
-  margin-bottom: 32px;
-}
-.about-h2 em {
-  font-style: italic; color: var(--ac);
-}
-.about-text {
-  font-family: 'Gira Sans', sans-serif;
-  font-size: clamp(14px, 1.6vw, 20px);
-  line-height: 1.6; color: var(--t3);
-  max-width: 800px; font-weight: 400;
-  margin-bottom: 32px;
-}
-
 /* Floating images */
 .float-img {
   position: absolute;
@@ -224,7 +283,7 @@ nav {
 
 /* Client logos carousel */
 .client-carousel {
-  width: 100%; overflow: hidden; padding: 24px 0;
+  width: 100%; overflow: hidden; padding: 24px 0 4px;
 }
 .client-track {
   display: flex; align-items: center; gap: 60px;
@@ -233,8 +292,8 @@ nav {
 }
 .client-track img {
   height: 24px; width: auto;
-  opacity: .4;
-  filter: grayscale(100%);
+  opacity: 1;
+  filter: brightness(0) invert(8%);
 }
 @keyframes clientScroll {
   0% { transform: translateX(-50%); }
@@ -243,37 +302,48 @@ nav {
 
 /* ══ PORTFOLIO ══ */
 .portfolio {
-  padding: 0 0 60px;
-  width: 95%; margin: -80px auto 0;
+  min-height: 100vh;
+  padding: 64px 0 80px;
+  width: 95%; margin: 0 auto;
   position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
 }
 .port-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
   margin-bottom: 40px;
 }
-.port-card {}
+.port-card { position: relative; display: block; }
 .port-thumb {
-  width: 100%; aspect-ratio: 16/10; background: var(--s2); border-radius: 0;
+  width: 100%; aspect-ratio: 16/10; background: var(--s2); border-radius: 14px;
+  border: 3px solid var(--ac);
   overflow: hidden; position: relative;
   display: flex; align-items: center; justify-content: center;
   font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--t4);
-  margin-bottom: 10px;
 }
 .port-meta {
-  display: flex; justify-content: space-between; align-items: baseline;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 16px; pointer-events: none;
 }
 .port-brand {
-  font-size: 13px; font-weight: 500; color: var(--t1); letter-spacing: .02em;
+  background: #F8354A; color: #F6EFE7;
+  padding: 7px 13px; border-radius: 100px;
+  border: 1px solid #161215;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 500; font-style: normal;
+  font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
 }
 .port-type {
-  font-family: 'Playfair Display', serif; font-style: italic;
-  font-size: 13px; color: var(--t3);
+  background: #F6EFE7; color: #161215;
+  padding: 6px 11px; border-radius: 100px;
+  border: 1px solid #161215;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400; font-style: italic;
+  font-size: 9.35px; letter-spacing: .06em; text-transform: uppercase;
 }
 
 
 /* ══ SERVICES ══ */
 .services {
-  padding: 80px 40px 80px;
+  padding: 80px 40px 24px;
   text-align: center;
 }
 .services .pill { margin-bottom: 48px; }
@@ -286,39 +356,47 @@ nav {
   flex: 0 0 280px;
   aspect-ratio: 9/16;
   border-radius: 16px;
+  border: 3px solid var(--ac);
   overflow: hidden;
   position: relative;
   background: var(--s2);
   scroll-snap-align: start;
+  container-type: inline-size;
 }
 .service-card img {
   width: 100%; height: 100%; object-fit: cover;
 }
 .service-card-title {
   position: absolute; left: 0; right: 0; bottom: 0;
-  display: flex; align-items: flex-end; justify-content: center;
-  font-size: 22px; color: #fff; line-height: 1.2;
-  text-shadow: 0 2px 12px rgba(0,0,0,.4); text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  line-height: 1; text-align: center;
   padding: 20px;
 }
 .service-card-title em {
-  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
+  font-family: 'Podium', sans-serif; font-weight: 900; font-style: normal;
+  font-size: 7.85cqw; text-transform: uppercase; letter-spacing: .03em;
+  color: #161215;
+  -webkit-text-stroke: 1.5px var(--ac); text-stroke: 1.5px var(--ac);
 }
 .service-card-title span {
-  font-family: 'Gira Sans', sans-serif; font-weight: 400;
+  font-family: 'Grave Shade', serif; font-weight: 400;
+  font-size: 12.14cqw; text-transform: uppercase; letter-spacing: .01em;
+  margin-top: -0.08em;
+  color: #161215;
+  -webkit-text-stroke: 0.5px var(--ac); text-stroke: 0.5px var(--ac);
 }
 .services-cta {
   display: flex; justify-content: center;
   padding: 40px 0 0;
 }
 .cta-outline {
-  display: inline-block; padding: 14px 32px;
-  background: var(--ac); border: 1.5px solid var(--ac); border-radius: 100px;
-  font-family: 'Gira Sans', sans-serif; font-weight: 400;
-  font-size: 13px; letter-spacing: .08em; text-transform: none;
-  color: var(--s1); transition: all .3s;
+  display: inline-block; padding: 10px 16px;
+  background: var(--ac); border: none; border-radius: 100px;
+  font-family: 'Be Vietnam Pro', sans-serif; font-weight: 400;
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: #161215; transition: all .3s;
 }
-.cta-outline:hover { background: #d42a3d; border-color: #d42a3d; }
+.cta-outline:hover { color: #F6EFE7; }
 
 /* ══ FOOTER CTA ══ */
 .footer-cta {
@@ -384,11 +462,44 @@ footer .fr {
   .service-card { flex: 0 0 220px; }
 }
 @media (max-width: 600px) {
-  nav { padding: 16px 20px; }
-  .nav-left { display: none; }
-  .hero, .about, .portfolio, .services, .footer-cta { padding-left: 20px; padding-right: 20px; }
-  .hero-center { padding: 0 16px; }
-  .about { height: auto; min-height: 80vh; }
+  nav { left: 0; right: 0; transform: none; width: auto; padding: 16px 20px; justify-content: flex-end; }
+  .nav-left { gap: 0; }
+  .nav-left a[href="#work"] { display: none; }
+  nav > .nav-cta { display: none; }
+  .nav-about-label { display: none; }
+  .hamburger {
+    display: inline-block; position: relative; width: 26px; height: 14px;
+  }
+  .hamburger > span {
+    position: absolute; left: 0; width: 100%; height: 2px;
+    background: currentColor; border-radius: 2px;
+    transition: transform .3s ease, opacity .2s ease, top .3s ease;
+  }
+  .hamburger > span:nth-child(1) { top: 0; }
+  .hamburger > span:nth-child(2) { top: 6px; }
+  .hamburger > span:nth-child(3) { top: 12px; }
+  .nav-dropdown.open .hamburger > span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+  .nav-dropdown.open .hamburger > span:nth-child(2) { opacity: 0; }
+  .nav-dropdown.open .hamburger > span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+  .nav-link:hover { transform: none; }
+  .about-panel {
+    position: fixed; inset: 0; top: 0; left: 0;
+    width: 100vw; max-width: none; height: 100dvh;
+    padding: 84px 28px 40px;
+    box-shadow: none;
+  }
+  body.menu-open .hero-wordmark { z-index: 400; }
+  .portfolio, .services, .footer-cta { padding-left: 20px; padding-right: 20px; }
+  .portfolio { min-height: auto; padding-top: 40px; padding-bottom: 0; }
+  .port-grid { margin-bottom: 0; }
+  .services { padding-top: 40px; }
+  .services .pill { margin-bottom: 40px; }
+  .hero-wordmark { left: 20px; transform: none; }
+  .hero-center { left: 20px; right: 20px; width: auto; transform: none; padding: 0; bottom: 130px; }
+  .hero-title { font-size: 16px; line-height: 1.45; max-width: 74vw; }
+  .hero-btns { margin-top: 22px; }
+  .hero-btn, .nav-cta.pill { padding: 12px 18px; font-size: 12px; }
+  .nav-cta { padding: 10px 18px; }
   .footer-cta { margin: 20px; }
   footer { padding: 16px 20px; }
   .port-grid { grid-template-columns: 1fr; }
@@ -402,48 +513,41 @@ footer .fr {
 
 <nav>
   <div class="nav-left">
-    <a href="#about" class="nav-link">About</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-link nav-about-toggle" aria-label="Menu">
+        <span class="nav-about-label">About</span>
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <div class="about-panel">
+        <h3 class="about-panel-h">About</h3>
+        <p>Brands are going BIG on video. But most video agencies? <em>Generic. Slow.</em></p>
+        <p>Lore is a social-first video studio. We make content you can&rsquo;t ignore. We move fast and hate boring. We make video for startups that do too.</p>
+        <h3 class="about-panel-h">Reach Out</h3>
+        <a class="about-panel-link" href="mailto:chat@lore.mov">chat@lore.mov</a>
+      </div>
+    </div>
     <a href="#work" class="nav-link">Work</a>
   </div>
-  <a href="/" class="nav-logo">Lore</a>
+  <a href="/" class="nav-logo"><img src="image/lore-logo.svg" alt="Lore"></a>
   <a href="mailto:rich@lore.mov" class="nav-cta">Reach Out</a>
 </nav>
 
 <!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-video-bg"><iframe src="https://player.vimeo.com/video/1188208422?background=1&autoplay=1&loop=1&muted=1&v=2" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe></div>
+<section class="hero section-dark">
+  <div class="hero-video-bg"><video src="video/hero-scrolling-2.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"></video></div>
+  <div class="hero-grain"></div>
   <div class="hero-center">
-    <div class="hero-title"><mark style="background:var(--ac);color:#fff;padding:2px 8px;">Social-first videos, campaigns, content.<br>Built for startups.</mark></div>
+    <div class="hero-title">A social-first video studio.<br>Making content you can't ignore.<br>Built for startups that move<br>fast and hate boring.</div>
     <div class="hero-btns">
-      <a href="#about" class="hero-btn">Learn More</a>
-      <a href="#work" class="hero-btn">See Work</a>
+      <a href="mailto:rich@lore.mov" class="nav-cta pill">Work Together</a>
     </div>
   </div>
-</section>
-
-<!-- ══ ABOUT ══ -->
-<section class="about" id="about">
-  <!-- floating images temporarily hidden
-  <div class="float-img" style="--rot:-12deg;"><img src="image/matcha.png" alt="Matcha"></div>
-  <div class="float-img" style="--rot:8deg;"><img src="image/puffer.png" alt="Puffer jacket"></div>
-  <div class="float-img" style="--rot:5deg;"><img src="image/mnp.png" alt="MacBook Pro"></div>
-  <div class="float-img" style="--rot:-7deg;"><img src="image/airpods.png" alt="AirPods"></div>
-  <div class="float-img" style="--rot:15deg;"><img src="image/moleskine.png" alt="Moleskine"></div>
-  <div class="float-img" style="--rot:-3deg;"><img src="image/iphone.png" alt="iPhone"></div>
-  <div class="float-img" style="--rot:10deg;"><img src="image/lanyard.png" alt="Lanyard"></div>
-  <div class="float-img" style="--rot:-8deg;"><img src="image/sitbag.png" alt="Sitbag"></div>
-  -->
-  <span class="pill">About</span>
-  <div class="about-h2">Get Videos. Build <em>Lore.</em></div>
-  <div class="about-text">
-    From making films for Samsung and Red Bull to scaling our own startups, SAME. From a single launch video to 100 on-brand videos a month, we don't bridge the gap between 'great' and 'fast'. We kill it.
-  </div>
-  <a href="mailto:rich@lore.mov" class="cta-pill" style="margin-top:1rem;background:var(--s1);color:#fff;text-transform:none;">Reach out</a>
+  <div class="hero-wordmark"><img src="image/lore-logo.svg" alt="Lore"></div>
 </section>
 
 <!-- ══ PORTFOLIO ══ -->
 <section class="portfolio" id="work">
-  <div style="text-align:center;margin-bottom:32px;">
+  <div style="text-align:center;margin-bottom:0;">
     <span class="pill">Work</span>
   </div>
   <div class="port-grid">
@@ -476,11 +580,11 @@ footer .fr {
 </section>
 
 <!-- ══ THESIS ══ -->
-<section style="background:var(--s1);padding:100px 24px;text-align:center;">
+<section class="section-dark" style="background:var(--s1);padding:100px 24px;text-align:center;display:none;">
   <p style="font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;line-height:1.35;max-width:780px;margin:0 auto 32px;">
     <span style="font-weight:700;">This year,</span> LORE is opening to a handful of founders and startups who want to shape tech culture in a big way.
   </p>
-  <p style="font-family:'Gira Sans','Inter',sans-serif;font-size:clamp(0.85rem,1.8vw,1rem);color:#888;line-height:1.7;max-width:620px;margin:0 auto;">
+  <p style="font-family:'Be Vietnam Pro','Inter',sans-serif;font-size:clamp(0.85rem,1.8vw,1rem);color:#888;line-height:1.7;max-width:620px;margin:0 auto;">
     Building the app isn't the hard part anymore. Distribution is. Getting eyes on it is. We don't just get people to see your creation. We get them to act, to move, to care.
   </p>
 </section>
@@ -490,36 +594,33 @@ footer .fr {
   <span class="pill">Services</span>
   <div class="services-carousel" id="services-carousel">
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1094996108?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1094996108?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Hero</em> <span>Video</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1135111015?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1135111015?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Founder</em> <span>Content</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1135103105?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1135103105?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Ad</em> <span>Creative</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1133486488?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1133486488?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Campaign</em> <span>Video</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1014229966?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1014229966?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Brand</em> <span>Film</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1195133349?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1195133349?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Founder</em> <span>Ad</span></div>
     </div>
     <div class="service-card">
-      <iframe src="https://player.vimeo.com/video/1195385113?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;"></iframe>
+      <iframe src="https://player.vimeo.com/video/1195385113?background=1&autoplay=1&loop=1&muted=1" allow="autoplay" style="width:316%;height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:none;"></iframe>
       <div class="service-card-title"><em>Founder</em> <span>Content</span></div>
     </div>
-  </div>
-  <div class="services-cta" style="justify-content:center;">
-    <a href="mailto:rich@lore.mov" class="cta-outline" style="text-transform:none;font-size:13px;font-weight:400;">Work together</a>
   </div>
 </section>
 
@@ -625,6 +726,57 @@ footer .fr {
   setTimeout(autoScroll, 1000);
 })();
 
+// Swap nav theme (light/dark) based on the section behind it
+(function() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const darkSections = Array.from(document.querySelectorAll('.section-dark'));
+  const probeY = 30; // reference point near the nav's vertical center
+
+  function updateNavTheme() {
+    let overDark = false;
+    for (const sec of darkSections) {
+      const r = sec.getBoundingClientRect();
+      if (r.top <= probeY && r.bottom > probeY) { overDark = true; break; }
+    }
+    nav.classList.toggle('nav-dark', overDark);
+    nav.classList.toggle('nav-light', !overDark);
+  }
+
+  updateNavTheme();
+  window.addEventListener('scroll', updateNavTheme, { passive: true });
+  window.addEventListener('resize', updateNavTheme);
+})();
+
+// About nav dropdown
+(function() {
+  const dd = document.querySelector('.nav-dropdown');
+  if (!dd) return;
+  const toggle = dd.querySelector('.nav-about-toggle');
+  const label = dd.querySelector('.nav-about-label');
+  const navEl = document.querySelector('nav');
+  const wmImg = document.querySelector('.hero-wordmark img');
+  const mqMobile = window.matchMedia('(max-width: 600px)');
+  function syncLabel() {
+    var open = dd.classList.contains('open');
+    if (label) label.textContent = open ? 'Close' : 'About';
+    if (navEl) navEl.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
+    if (wmImg) wmImg.src = (open && mqMobile.matches) ? 'image/lore-logo-cream.svg' : 'image/lore-logo.svg';
+  }
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+    syncLabel();
+  });
+  document.addEventListener('click', function(e) {
+    if (!dd.contains(e.target)) { dd.classList.remove('open'); syncLabel(); }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { dd.classList.remove('open'); syncLabel(); }
+  });
+})();
+
 // Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
@@ -632,6 +784,56 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+// Hero wordmark travels from bottom of hero up to the centered header logo on scroll
+(function() {
+  const wm = document.querySelector('.hero-wordmark');
+  const hero = document.querySelector('.hero');
+  const navLogo = document.querySelector('.nav-logo');
+  const copy = document.querySelector('.hero-center');
+  if (!wm || !hero) return;
+  if (navLogo) navLogo.style.display = 'none'; // traveling wordmark replaces the static logo
+
+  const ASPECT = 1015 / 164;   // logo width / height
+  const END_W = 140;           // resting width in the nav (px)
+  let ticking = false;
+
+  function update() {
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+    const heroH = hero.offsetHeight || vh;
+    const END_TOP = vw <= 600 ? 21 : 26;   // resting top offset (higher on mobile to center with nav button)
+    // progress 0 -> 1 across most of the hero scroll
+    const p = Math.min(Math.max(window.scrollY / (heroH * 0.5), 0), 1);
+    // easeInOutCubic for a smoother settle
+    const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+
+    const startW = Math.min(vw * 0.92, vw - 40);
+    const w = startW + (END_W - startW) * e;
+    const h = w / ASPECT;
+    const startTop = vh - h - Math.max(vh * 0.04, 18); // near the bottom of the hero
+    const top = startTop + (END_TOP - startTop) * e;
+
+    wm.style.width = w + 'px';
+    wm.style.top = top + 'px';
+
+    // Fade out the tagline + button as soon as the logo starts moving
+    if (copy) {
+      const fade = 1 - Math.min(p / 0.15, 1);
+      copy.style.opacity = fade;
+      copy.style.pointerEvents = fade < 0.05 ? 'none' : '';
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }
+
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+})();
 </script>
 </body>
 </html>
